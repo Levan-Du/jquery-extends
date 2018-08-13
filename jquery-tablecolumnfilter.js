@@ -4,7 +4,7 @@
     var $currentTH = null;
     var $options = null;
     var closed = false;
-    var preInputText = '';
+    var preInputTexts = {};
 
     $.fn.showColumnFilter = function(options) {
         debug(this);
@@ -45,9 +45,9 @@
                 $('body > .column-filter li input[type="checkbox"]').prop('checked', $(e.target).prop('checked'));
             else {
                 var $checkboxs = $('body > .column-filter li input[type="checkbox"]');
-                var len = $('body > .column-filter li input[type="checkbox"]:checked').filter(function(i, el) {console.log($(el).siblings('label').text()); return $(el).siblings('label').text() != 'ALL'; }).length;
+                var len = $('body > .column-filter li input[type="checkbox"]:checked').filter(function(i, el) { console.log($(el).siblings('label').text()); return $(el).siblings('label').text() != 'ALL'; }).length;
                 console.log(len);
-                console.log($checkboxs.length - 1 );
+                console.log($checkboxs.length - 1);
                 if ($checkboxs.length - 1 == len) {
                     $('body > .column-filter li input[type="checkbox"]:first').prop('checked', true);
                 } else {
@@ -90,7 +90,7 @@
         $('#column-filter-input').on('input', function(e) {
             $('body > .column-filter li:first input[type="checkbox"]').prop('checked', false);
             $('body > .column-filter li:first input[type="checkbox"]').change();
-            var inputText = preInputText = $(this).val();
+            var inputText = preInputTexts[$this.index()] = $(this).val();
             if (inputText == '') {
                 $('body > .column-filter li').removeClass('hidden');
                 return;
@@ -199,8 +199,8 @@
         //     $('#' + filterPanelID + ' li input[type="checkbox"]').change();
         //     return;
         // }
-        if (preInputText != '') {
-            $('#column-filter-input').val(preInputText);
+        if (!!preInputTexts && preInputTexts[columnIndex] != '') {
+            $('#column-filter-input').val(preInputTexts[columnIndex]);
         }
         $('#' + filterPanelID + ' li input[type="checkbox"]').each(function(i, checkbox) {
             var labelText = $(checkbox).siblings('label').text();
@@ -213,12 +213,12 @@
                     return labelText == el.text;
                 })) {
                 $(checkbox).prop('checked', true);
-                if (preInputText != '') {
+                if (!!preInputTexts && preInputTexts[columnIndex] != '') {
                     $li.addClass('visible');
                     $li.remove('hidden');
                 }
             } else {
-                if (preInputText != '') {
+                if (!!preInputTexts && preInputTexts[columnIndex] != '') {
                     $li.addClass('hidden');
                     $li.remove('visible');
                 }
