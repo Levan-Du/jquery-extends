@@ -45,9 +45,7 @@
                 $('body > .column-filter li input[type="checkbox"]').prop('checked', $(e.target).prop('checked'));
             else {
                 var $checkboxs = $('body > .column-filter li input[type="checkbox"]');
-                var len = $('body > .column-filter li input[type="checkbox"]:checked').filter(function(i, el) { console.log($(el).siblings('label').text()); return $(el).siblings('label').text() != 'ALL'; }).length;
-                console.log(len);
-                console.log($checkboxs.length - 1);
+                var len = $('body > .column-filter li input[type="checkbox"]:checked').filter(function(i, el) { return $(el).siblings('label').text() != 'ALL'; }).length;
                 if ($checkboxs.length - 1 == len) {
                     $('body > .column-filter li input[type="checkbox"]:first').prop('checked', true);
                 } else {
@@ -159,7 +157,6 @@
                 isfilter = false;
             }
         });
-        // console.log(cellText);
         if (isfilter) {
             $row.css('display', 'table-row');
         } else {
@@ -191,14 +188,6 @@
 
     function setDefaultFilter(filterPanelID, columnIndex) {
         if (!filters[columnIndex]) return;
-        // if (filters[columnIndex].some(function(el, i) { el.text == 'ALL' })) {
-        //     var $firstFilterCheckbox = $('#' + filterPanelID + ' li input[type="checkbox"]:first');
-        //     // $firstFilterCheckbox.prop('checked', true);
-        //     // $firstFilterCheckbox.change();
-        //     $('#' + filterPanelID + ' li input[type="checkbox"]').prop('checked', true);
-        //     $('#' + filterPanelID + ' li input[type="checkbox"]').change();
-        //     return;
-        // }
         if (!!preInputTexts && preInputTexts[columnIndex] != '') {
             $('#column-filter-input').val(preInputTexts[columnIndex]);
         }
