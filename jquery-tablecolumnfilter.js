@@ -43,6 +43,17 @@
         $('body > .column-filter li input[type="checkbox"]').bind('change', function(e) {
             if ($(e.target).siblings('label:first').text() == 'ALL')
                 $('body > .column-filter li input[type="checkbox"]').prop('checked', $(e.target).prop('checked'));
+            else {
+                var $checkboxs = $('body > .column-filter li input[type="checkbox"]');
+                var len = $('body > .column-filter li input[type="checkbox"]:checked').filter(function(i, el) {console.log($(el).siblings('label').text()); return $(el).siblings('label').text() != 'ALL'; }).length;
+                console.log(len);
+                console.log($checkboxs.length - 1 );
+                if ($checkboxs.length - 1 == len) {
+                    $('body > .column-filter li input[type="checkbox"]:first').prop('checked', true);
+                } else {
+                    $('body > .column-filter li input[type="checkbox"]:first').prop('checked', false);
+                }
+            }
         });
 
         setDefaultFilter(panelID, columnIndex);
@@ -77,8 +88,9 @@
         });
 
         $('#column-filter-input').on('input', function(e) {
+            $('body > .column-filter li:first input[type="checkbox"]').prop('checked', false);
+            $('body > .column-filter li:first input[type="checkbox"]').change();
             var inputText = preInputText = $(this).val();
-            console.log('input text:' + inputText);
             if (inputText == '') {
                 $('body > .column-filter li').removeClass('hidden');
                 return;
@@ -92,7 +104,6 @@
                     $(li).addClass('visible');
                     $(li).removeClass('hidden');
                 } else {
-                    console.log('label text:' + labelText);
                     $(li).addClass('hidden');
                     $(li).removeClass('visible');
                 }
@@ -100,7 +111,6 @@
         });
 
         $('#column-filter-input').on('focus', function(e) {
-            console.log('focus', $(this).closest('div'));
             $(this).closest('p').css({ outline: 'solid 1px #8be' });
         });
 
@@ -110,10 +120,8 @@
     };
 
     $(window).resize(function(e) {
-        console.log('resize begin');
         if ($currentTH != null && !closed) {
             $currentTH.showColumnFilter($options);
-            console.log('resize');
         }
     });
 
