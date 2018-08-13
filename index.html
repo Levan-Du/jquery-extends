@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>web test</title>
+    <script type="text/javascript" src="./jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./jquery-tablecolumnfilter.js"></script>
+    <script type="text/javascript" src="./bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <style type="text/css">
+    #grid {
+        border-collapse: collapse;
+    }
+
+    #grid th,
+    td {
+        border: solid 1px #ccc;
+    }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button id="btnSearch" type="button" class="btn btn-default" style="background: transparent;">Search</button>
+        <input type="text" style="" name="">
+    </div>
+    <table id="grid" class="table table-strip">
+        <thead>
+            <tr>
+                <th>Name<i class="glyphicon glyphicon-filter" style="float:right;"></i></th>
+                <th>Age<i class="glyphicon glyphicon-filter" style="float:right;"></i></th>
+                <th>Gendar<i class="glyphicon glyphicon-filter" style="float:right;"></i></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script type="text/javascript">
+    $(function() {
+        $('#btnSearch').click(function() {
+            var iArr = [];
+            for (i = 1; i <= 1000; i++) {
+                iArr.push(i);
+            }
+            var data = iArr.map(function(el, i) {
+                return {
+                    ID: i,
+                    Name: 'Levan' + el,
+                    Age: 20 + i % 3,
+                    Gendar: i % 2
+                };
+            });
+            var trArr = data.map(function(el, i) {
+                return '<tr id=' + el.ID + '><td>' + el.Name + '</td><td>' + el.Age + '</td><td><select value=' + el.Gendar + '><option value=0' + (el.Gendar == 0 ? ' selected' : '') + '>男</option><option value=1' + (el.Gendar == 1 ? ' selected' : '') + '>女</option></select></td></tr>'
+            });
+            var trHtml = trArr.join('');
+            $('#grid tbody').html(trHtml);
+        });
+
+        $('#grid th').on('click', 'i', function(e) {
+            e.stopPropagation();
+            $(e.target).closest('th').showColumnFilter({
+                ok: function(e) {
+                },
+                cancel: function(e) {
+                }
+            });
+        });
+    });
+    </script>
+</body>
+
+</html>
