@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>magic.css</title>
+    <link rel="stylesheet" type="text/css" href="./jquery-loading.css">
+    <script type="text/javascript" src="./jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./jquery-loading.js"></script>
+</head>
+
+<body>
+    <div>
+        <button id="btnshow">show loading</button>
+        <button id="btnclose">close loading</button>
+    </div>
+    <script type="text/javascript">
+    $(function() {
+        $('#btnshow').click((function() {
+            $.loading({
+                message: "请等待操作完成，谢谢",
+                runing: function() {
+                    setTimeout(function() {
+                        console.log('hello,levan!');
+                        // $.loading.close();
+                    }, 5000);
+                }
+            })
+        }));
+
+
+        $('#btnclose').click((function() {
+            $.loading.close();
+        }));
+    });
+    </script>
+</body>
+
+</html>

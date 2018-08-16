@@ -1,4 +1,4 @@
-﻿(function() {
+﻿! function($) {
     var filters = {};
     var maxWidth = 350;
     var $currentTH = null;
@@ -218,4 +218,4 @@
     function debug($obj) {
         // console.log($obj);
     }
-})(jQuery);
+}(window.jQuery);
