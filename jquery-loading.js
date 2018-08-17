@@ -19,7 +19,7 @@
             '</div>';
         $('body').append(html);
         t_id = setInterval(animate, 20);
-        opts.runing && opts.runing();
+        opts.running && opts.running();
     }
 
     function animate() {
