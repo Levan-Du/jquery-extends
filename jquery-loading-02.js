@@ -1,11 +1,4 @@
 ! function($) {
-    var t_id = 0;
-    var pos = 0;
-    var dir = 3;
-    var len = 0;
-    var dotCount = 0;
-    var mm = 0;
-
     $.loading = function(options) {
         var opts = $options = $.extend({}, options);
         var html = '' +

@@ -33,15 +33,15 @@
             // console.log($elem.css(), pos, len);
         }
 
-        mm += 20;
-        if (mm == 600) {
-            $('.loading-msg .dot').text(dotText(dotCount));
-            dotCount++;
-            if (dotCount == 3) {
-                dotCount = 0;
-            }
-            mm = 0;
-        }
+        // mm += 20;
+        // if (mm == 600) {
+        //     $('.loading-msg .dot').text(dotText(dotCount));
+        //     dotCount++;
+        //     if (dotCount == 3) {
+        //         dotCount = 0;
+        //     }
+        //     mm = 0;
+        // }
     }
 
     function dotText(count) {

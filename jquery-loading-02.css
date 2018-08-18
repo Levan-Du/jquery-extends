@@ -3,19 +3,19 @@
         width: 5px;
         height: 5px;
         border-radius: 2.5px;
-        background: radial-gradient(#eee, #ccc, #aaa);
+        background: radial-gradient(#fff, #ccc, #aaa);
     }
     50% {
         width: 8px;
         height: 8px;
         border-radius: 4px;
-        background: radial-gradient(#fff, #bbb, #aaa);
+        background: radial-gradient(#fff, #ccc, #ccc);
     }
     100% {
         width: 5px;
         height: 5px;
         border-radius: 2.5px;
-        background: radial-gradient(#eee, #ccc, #aaa);
+        background: radial-gradient(#fff, #ccc, #aaa);
     }
 }
 
@@ -38,7 +38,7 @@
     width: 8px;
     height: 8px;
     border-radius: 4px;
-    background: radial-gradient(#fff, #bbb, #999);
+    background: radial-gradient(#fff, #ccc, #aaa);
 }
 
 .levan .msg {
