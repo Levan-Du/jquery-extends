@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>100</title>
+    <link rel="stylesheet" type="text/css" href="./jquery-loading-02.css">
+    <script type="text/javascript" src="./jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./jquery-loading-02.js"></script>
+</head>
+
+<body>
+    <div>
+        <button id=btnClick>Click</button>
+    </div>
+    <script type="text/javascript">
+    $(function() {
+        $('#btnClick').click(function() {
+            $.loading({
+                message: '操作正在完成，请稍后...',
+                running: function() {
+                    setTimeout(function() {
+                        $.loading.close();
+                    }, 2000);
+                }
+            })
+        });
+    });
+    </script>
+</body>
+
+</html>

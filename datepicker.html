@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>datepicker</title>
+    <link rel="stylesheet" type="text/css" href="./bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <style type="text/css">
+    .levan.datepicker {
+        width: 400px;
+    }
+
+    .footer {
+        text-align: right;
+    }
+
+    .glyphicon-chevron-left {
+        float: left;
+        margin-left: 10px;
+    }
+
+    .glyphicon-chevron-right {
+        float: right;
+        margin-right: 10px;
+    }
+
+    .year {
+        background: #eef;
+    }
+
+    .select {
+        float: left;
+        width: auto;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="levan datepicker">
+        <div class="header">
+            <div class="year clearfix">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+                <select class="select"></select>
+                <i class="glyphicon glyphicon-chevron-right"></i></div>
+            <div class="month"></div>
+        </div>
+        <div class="body"></div>
+        <div class="footer">
+            <button class="btn btn-default btn-sm">Clear</button>
+            <button class="btn btn-default btn-sm">Cancel</button>
+            <button class="btn btn-default btn-sm">OK</button>
+        </div>
+    </div>
+</body>
+
+</html>
